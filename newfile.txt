@@ -1,0 +1,3 @@
+Hello this is text in the second text file in the programs folder.
+i shall open and read this file in python.
+-------------------

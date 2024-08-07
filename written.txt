@@ -1,0 +1,5 @@
+This text is written into the file by python.
+This will be line 2 in the file.
+I am in Chandigarh.
+I am at IT Park.
+I am inside Trantor INC.
