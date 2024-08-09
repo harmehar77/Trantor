@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Title and text
 st.title('Simple Streamlit App')
@@ -19,16 +17,11 @@ df = pd.read_csv('datasets/advertising.csv')
 st.write('Here is a sample DataFrame:', df)
 
 # Line chart
-# chart_data = pd.DataFrame(
-#      np.random.randn(20, 3),
-#      columns=['a', 'b', 'c'])
+chart_data = pd.DataFrame(
+     np.random.randn(20, 3),
+     columns=['a', 'b', 'c'])
 
 # chart = sns.pairplot(df,hue='Clicked on Ad',palette='bwr')
-sns.set_theme(style="darkgrid")
-plt.figure(figsize=(10, 6))
-sns.jointplot(x='Daily Time Spent on Site',y='Daily Internet Usage',data=df,color='red')
-
-st.pyplot(plt)
 
 # Slider widget
 x = st.slider('Select a value for x', min_value=0, max_value=100, value=50)
