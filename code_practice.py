@@ -141,33 +141,33 @@ print(even)'''
 #Rock beats scissors
 #Scissors beats paper
 #Paper beats rock
-'''import random
-check = True
-options = ["rock","paper","scissor"]
-while check:
-    choice1 = str(input("Player 1 enter your choice(Rock/Paper/Scissor): ")).lower()
-    choice2 = (random.choice(options))
-    print(f"Computer's choice: {choice2}")
-    if choice1==choice2:
-        print("Draw")
-    elif choice1=='rock' and choice2=='paper':
-        print("Player 2 Wins")
-    elif choice1=='rock' and choice2=='scissor':
-        print("Player 1 Wins")
-    elif choice1=='paper' and choice2=='rock':
-        print("Player 1 wins")
-    elif choice1=='paper' and choice2=='scissor':
-        print("Player 2 wins")
-    elif choice1=='scissor' and choice2=='rock':
-        print("Player 2 wins")
-    elif choice1=='scissor' and choice2=='paper':
-        print("Player 1 wins")
+# import random
+# check = True
+# options = ["rock","paper","scissor"]
+# while check:
+#     choice1 = str(input("Player 1 enter your choice(Rock/Paper/Scissor): ")).lower()
+#     choice2 = (random.choice(options))
+#     print(f"Computer's choice: {choice2}")
+#     if choice1==choice2:
+#         print("Draw")
+#     elif choice1=='rock' and choice2=='paper':
+#         print("Player 2 Wins")
+#     elif choice1=='rock' and choice2=='scissor':
+#         print("Player 1 Wins")
+#     elif choice1=='paper' and choice2=='rock':
+#         print("Player 1 wins")
+#     elif choice1=='paper' and choice2=='scissor':
+#         print("Player 2 wins")
+#     elif choice1=='scissor' and choice2=='rock':
+#         print("Player 2 wins")
+#     elif choice1=='scissor' and choice2=='paper':
+#         print("Player 1 wins")
     
-    in_option = input("Play again(yes/no): ").lower()
-    if in_option == 'yes':
-        check = True
-    else:
-        check = False'''
+#     in_option = input("Play again(yes/no): ").lower()
+#     if in_option == 'yes':
+#         check = True
+#     else:
+#         check = False
 
 #prog to find frequency of elements of a list
 '''original_list = [1,1,2,1,2,4,3,2,5,2,1,3,4,4,5,6,10,23]
