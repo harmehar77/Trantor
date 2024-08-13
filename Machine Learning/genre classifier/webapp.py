@@ -1,3 +1,4 @@
+import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 import os
@@ -7,17 +8,18 @@ import json
 import pickle
 import numpy as np
 import sklearn.tree 
-import streamlit as st
-
 pickle_in = open("dt_genre_classifier","rb") 
 genre_classifier = pickle.load(pickle_in)
-
 pickle_in = open("standardscaler","rb") 
 scaler = pickle.load(pickle_in)
-
-
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
+
+
+st.title("Song Genre Classifier")
+# User inputs
+name_track = st.text_input("Enter the song name:")
+name_artist = st.text_input("Enter the artist name:")
 
 def get_token():
     auth_string = client_id + ":" + client_secret
@@ -38,10 +40,10 @@ def get_token():
 def get_auth_header(token):
     return {"Authorization": "Bearer " + token}
 
-def search_for_track(token, track_name):
+def search_for_track(token, name_track):
     url = "https://api.spotify.com/v1/search"
     headers = get_auth_header(token)
-    query = f"?q={track_name}&type=track&limit=1"
+    query = f"?q={name_track}&type=track&limit=1"
 
     query_url = url + query
     result = get(query_url,headers=headers)
@@ -62,20 +64,18 @@ def get_track_features(token,track_id):
     return json_result
 
 token = get_token()
-result = search_for_track(token, "Not Like Us")
+result = search_for_track(token,name_track)
 track_id = result['id']
-
 track_features = get_track_features(token,track_id)
 
-extract_keys = ['duration_ms','danceability','energy','loudness','speechiness','acousticness','instrumentalness','liveness','valence','tempo']
-features = []
-features = [track_features[key] for key in extract_keys]
-
-scaled = scaler.transform([features])
-
-genre = {0:'acoustic',1:'classical',2:'club',3:'drum-and-bass',4:'jazz',5:'metal',6:'pop',7:'r-n-b',8:'rock',9:'romance'}
+scaled = scaler.transform([track_features])
 prediction = genre_classifier.predict(scaled)
+genre = {0:'acoustic',1:'classical',2:'club',3:'drum-and-bass',4:'jazz',5:'metal',6:'pop',7:'r-n-b',8:'rock',9:'romance'}
 
-key_to_display = prediction[0]
+song_genre = genre[prediction[0]]
 
-print(f"The genre is: {genre[key_to_display]}") 
+if st.button("Classify Genre"):
+        st.success(f"The genre of '{name_track}' by {name_artist} is: {song_genre}")
+
+else:
+    st.error("Song not found. Please check the song and artist names.")
