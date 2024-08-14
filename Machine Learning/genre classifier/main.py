@@ -62,20 +62,21 @@ def get_track_features(token,track_id):
     return json_result
 
 token = get_token()
-result = search_for_track(token, "Not Like Us")
-track_id = result['id']
+result = search_for_track(token, "Husn Anuv Jain")
+# image = result['album']['images'][0]['url']
+# track_id = result['id']
+print(result)
+# track_features = get_track_features(token,track_id)
 
-track_features = get_track_features(token,track_id)
+# extract_keys = ['duration_ms','danceability','energy','loudness','speechiness','acousticness','instrumentalness','liveness','valence','tempo']
+# features = []
+# features = [track_features[key] for key in extract_keys]
 
-extract_keys = ['duration_ms','danceability','energy','loudness','speechiness','acousticness','instrumentalness','liveness','valence','tempo']
-features = []
-features = [track_features[key] for key in extract_keys]
+# scaled = scaler.transform([features])
 
-scaled = scaler.transform([features])
+# genre = {0:'acoustic',1:'classical',2:'club',3:'drum-and-bass',4:'jazz',5:'metal',6:'pop',7:'r-n-b',8:'rock',9:'romance'}
+# prediction = genre_classifier.predict(scaled)
 
-genre = {0:'acoustic',1:'classical',2:'club',3:'drum-and-bass',4:'jazz',5:'metal',6:'pop',7:'r-n-b',8:'rock',9:'romance'}
-prediction = genre_classifier.predict(scaled)
+# key_to_display = prediction[0]
 
-key_to_display = prediction[0]
-
-print(f"The genre is: {genre[key_to_display]}") 
+# print(f"The genre is: {genre[key_to_display]}") 
